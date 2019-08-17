@@ -9,3 +9,4 @@ The beauty of this approach is a simplicity of usage, please, check the code bel
     <div>Content goes here...</div>
   </Toggler>
 ```
+Live demo on CodeSandbox: https://codesandbox.io/s/github/supromikali/react-children-toggler
