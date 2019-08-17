@@ -4,11 +4,11 @@ import ReactDOM from "react-dom";
 const Toggler = ({ children }) => {
   const [isVisible, setVisible] = useState(true);
   const renderChildren = React.Children.toArray(children).map((el, index) => {
-    const props = index
-      ? { style: { display: isVisible ? "block" : "none" } }
-      : { onClick: () => setVisible(!isVisible) };
-
-    return React.cloneElement(el, props);
+    // content should be returned "as is" if it is visible
+    if (index) return isVisible ? el : null;
+    // if index = 0 then we consider our element is a toggler button
+    // To change props, React.cloneElement is used because element is immutable
+    return React.cloneElement(el, { onClick: () => setVisible(!isVisible) });
   });
 
   return <>{renderChildren}</>;
