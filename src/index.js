@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 const Toggler = ({ children }) => {
   const [isVisible, setVisible] = useState(true);
-  const renderChildren = React.Children.toArray(children).map((el, index) => {
+  const renderChildren = React.Children.map(children, (el, index) => {
     // content should be returned "as is" if it is visible
     if (index) return isVisible ? el : null;
     // if index = 0 then we consider our element is a toggler button
@@ -11,7 +11,7 @@ const Toggler = ({ children }) => {
     return React.cloneElement(el, { onClick: () => setVisible(!isVisible) });
   });
 
-  return <>{renderChildren}</>;
+  return renderChildren;
 };
 
 export const App = () => (
